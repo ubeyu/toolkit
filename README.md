@@ -3,7 +3,7 @@
 ___
 
 ### 列表
-1. SM4/ECB/PKCS7Padding加解密工具:
+1. SM4/ECB/PKCS7Padding or NoPadding加解密工具:
   - Pojo/SM4.java
   - Pojo/SM4Context.java
   - Util/SM4Utils.java
