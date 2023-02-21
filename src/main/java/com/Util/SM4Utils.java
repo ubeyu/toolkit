@@ -16,10 +16,10 @@ public class SM4Utils {
      * SM4_ECB_PKCS7加密
      * 密文长度不固定，会随着被加密字符串长度的变化而变化
      */
-    public static String encryptDatas(String plainText, String secretKey) {
+    public static String encryptDatas(String plainText, String secretKey, Boolean isPadding) {
         try {
             SM4Context ctx = new SM4Context();
-            ctx.isPadding = true;
+            ctx.isPadding = isPadding;
             ctx.mode = 1;
             byte[] keyBytes = secretKey.getBytes();
             SM4 sm4 = new SM4();
@@ -39,10 +39,10 @@ public class SM4Utils {
     /**
      * SM4_ECB_PKCS7解密
      */
-    public static String decryptDatas(String cipherText, String secretKey) {
+    public static String decryptDatas(String cipherText, String secretKey, Boolean isPadding) {
         try {
             SM4Context ctx = new SM4Context();
-            ctx.isPadding = true;
+            ctx.isPadding = isPadding;
             ctx.mode = 0;
             byte[] keyBytes = secretKey.getBytes();
             SM4 sm4 = new SM4();
@@ -61,13 +61,13 @@ public class SM4Utils {
         // 加解密data
         String data = "";
 
-        System.out.println("1) 传输数据:"+data);
+        System.out.println("1) 传输数据:" + data);
         //加密
-        String encrypte = encryptDatas(data, secretKey);
-        System.out.println("2) 加密后数据:"+encrypte);
+        String encrypte = encryptDatas(data, secretKey, true);
+        System.out.println("2) 加密后数据:" + encrypte);
         //解密
-        String decryptDatas = decryptDatas(encrypte, secretKey);
-        System.out.println("3) 解密后数据："+decryptDatas);
+        String decryptDatas = decryptDatas(encrypte, secretKey, true);
+        System.out.println("3) 解密后数据：" + decryptDatas);
     }
 
 }
